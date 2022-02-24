@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
 import { Client, Intents, Message, MessageEmbed, MessagePayload } from "discord.js";
-import { TOKEN } from "./config.json";
+import config from "./Config"
 import Cards from "./Cards";
 import { CommandTrigger, MessageTrigger } from "./Trigger";
 
@@ -18,7 +18,7 @@ export default async (commands: CommandTrigger<any>[], messageTriggers: MessageT
 
     const APP_ID = "943287770279985222";
     const SERVER_ID = "272459782869221377";
-    const rest = new REST({ version: '9' }).setToken(TOKEN);
+    const rest = new REST({ version: '9' }).setToken(config.token);
     rest.put(Routes.applicationGuildCommands(APP_ID, SERVER_ID), { body: commands.map(cmd => cmd.build()) });
 
     const client = new Client({ intents: new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES])});
@@ -77,6 +77,6 @@ export default async (commands: CommandTrigger<any>[], messageTriggers: MessageT
             return interaction.reply(reply);
     });
 
-    client.login(TOKEN);
+    client.login(config.token);
 
 }

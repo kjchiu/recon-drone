@@ -2,11 +2,11 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 
 import Jnet from "./sources/Jnet";
 import Cards from "./Cards";
+import config from "./Config";
 import bot from "./Bot";
 import { CommandTrigger, Trigger, TriggerResponse } from "./Trigger";
 import { Message, MessageEmbed, MessagePayload } from "discord.js";
 
-import config from "./config.json";
 import { Card } from "./Card";
 import formatter from "./formatter";
 
@@ -15,11 +15,7 @@ console.log("hello");
 (async () => {
 
     const sources: Jnet[] = config.sources.filter(s => s && s.type === "jnet").map(source => {
-            const {
-                url,
-                auth,
-            } = source;
-            return new Jnet(url, auth);
+        return new Jnet(source.url, source.auth);
     });
     const cards = new Cards(sources);
 
