@@ -1,0 +1,24 @@
+{
+  "name": "recon-drone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "out/main.js",
+  "scripts": {
+    "start": "node out/main.js",
+    "watch": "npx tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "@discordjs/rest": "^0.3.0",
+    "commander": "^9.0.0",
+    "discord-api-types": "^0.26.1",
+    "discord.js": "^13.6.0",
+    "fuse.js": "^6.5.3",
+    "node-fetch": "^2.6.7"
+  }
+}
